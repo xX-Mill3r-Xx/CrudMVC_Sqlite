@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CRUDMVC_Sqlite.Models.Usuarios>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="NovoUsuario" class="btn btn-dark">Novo Usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SobreNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumeroRegistro)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SobreNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroRegistro)
+            </td>
+            <td>
+                <a asp-action="AtualizarUsuario" asp-route-id="@item.Id" class="btn btn-primary">Atualizar Usuário</a> |
+                <form asp-action="ExcluirUsuario" asp-route-id="@item.Id">
+                    <button type="submit" class="btn btn-danger">Excluir Usuário</button>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
